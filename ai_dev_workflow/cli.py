@@ -38,29 +38,61 @@ def run_script(script_name, args=None):
 def setup_project(args):
     """Set up a new project."""
     print("🚀 Setting up new AI Development Workflow project...")
-    return run_script("setup-project")
+    try:
+        from .setup import main as setup_main
+        return setup_main()
+    except Exception as e:
+        print(f"❌ Setup failed: {e}")
+        return 1
 
 def generate_feature(args):
     """Generate a feature template."""
-    script_args = ["--feature", args.feature]
-    if args.issue:
-        script_args.extend(["--issue", args.issue])
-    if args.output:
-        script_args.extend(["--output", args.output])
-    
-    return run_script("generate_feature_md", script_args)
+    try:
+        from .feature import main as feature_main
+        import sys
+        
+        # Simulate command line arguments
+        old_argv = sys.argv
+        sys.argv = ["generate_feature"]
+        sys.argv.extend(["--feature", args.feature])
+        if args.issue:
+            sys.argv.extend(["--issue", args.issue])
+        if args.output:
+            sys.argv.extend(["--output", args.output])
+        
+        try:
+            return feature_main()
+        finally:
+            sys.argv = old_argv
+            
+    except Exception as e:
+        print(f"❌ Feature generation failed: {e}")
+        return 1
 
 def validate_features(args):
     """Validate feature markdown files."""
-    script_args = []
-    if args.all:
-        script_args.append("--all")
-    elif args.file:
-        script_args.append(args.file)
-    else:
-        script_args.append("--all")  # Default to all
-    
-    return run_script("check_task_plan", script_args)
+    try:
+        from .validation import main as validation_main
+        import sys
+        
+        # Simulate command line arguments
+        old_argv = sys.argv
+        sys.argv = ["validate"]
+        if args.all:
+            sys.argv.append("--all")
+        elif args.file:
+            sys.argv.append(args.file)
+        else:
+            sys.argv.append("--all")  # Default to all
+        
+        try:
+            return validation_main()
+        finally:
+            sys.argv = old_argv
+            
+    except Exception as e:
+        print(f"❌ Validation failed: {e}")
+        return 1
 
 def show_project_info(args):
     """Show current project information."""
