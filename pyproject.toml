@@ -10,10 +10,10 @@ readme = "README.md"
 requires-python = ">=3.7"
 license = {text = "MIT"}
 authors = [
-    {name = "AI Development Team", email = "dev@example.com"}
+    {name = "Robert Crossland", email = "robertcrossland@proton.me"}
 ]
 maintainers = [
-    {name = "AI Development Team", email = "dev@example.com"}
+    {name = "Robert Crossland", email = "robertcrossland@proton.me"}
 ]
 keywords = ["ai", "development", "workflow", "nextjs", "unity", "automation", "cursor"]
 classifiers = [

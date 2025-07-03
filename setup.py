@@ -88,8 +88,8 @@ setup(
     
     # Project URLs
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/ai-dev-workflow/issues",
-        "Documentation": "https://github.com/yourusername/ai-dev-workflow#readme",
-        "Source": "https://github.com/yourusername/ai-dev-workflow",
+        "Bug Reports": "https://github.com/robcross1977/ai-dev-workflow/issues",
+        "Documentation": "https://github.com/robcross1977/ai-dev-workflow#readme",
+        "Source": "https://github.com/robcross1977/ai-dev-workflow",
     },
 ) 
