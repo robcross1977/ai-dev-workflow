@@ -1,0 +1,41 @@
+{
+  "ai.description": "AI Development Workflow - Automated project setup and feature development for NextJS and Unity",
+  "ai.context.codebaseInstructions": "This is the AI Development Workflow package. It provides automated project setup, feature template generation, and development workflow management for NextJS and Unity projects. When working with this codebase:\n\n1. Follow the established patterns in the package structure\n2. Use the ProjectConfig class for accessing project settings\n3. Generate comprehensive feature templates with proper task breakdowns\n4. Ensure all functions have proper docstrings and error handling\n5. Follow the user's coding standards: clear names, single purpose functions, declarative style\n6. When creating new scripts, add them to the CLI interface\n7. Validate inputs and provide helpful error messages",
+
+  "ai.context.projectInstructions": "This project helps developers set up and manage NextJS and Unity projects with AI assistance. Key principles:\n\n- Automation over manual work\n- Standardized project structures\n- Comprehensive feature planning\n- Clear task breakdowns with file paths\n- Built-in validation and progress tracking\n- CLI-first interface for developer productivity\n\nWhen suggesting code changes:\n- Ensure compatibility with both NextJS and Unity project types\n- Use the project configuration system for paths and settings\n- Add proper validation for user inputs\n- Follow the established error handling patterns\n- Generate templates that are actionable and specific",
+
+  "ai.rules": [
+    "Always use the ProjectConfig class to access project settings and paths",
+    "Generate feature templates that include specific file paths and comprehensive task lists",
+    "Add docstrings to all new functions explaining their purpose and parameters",
+    "Use descriptive variable names and avoid abbreviations except for common ones (idx, config, etc.)",
+    "Validate user inputs and provide helpful error messages",
+    "Follow the established CLI patterns when adding new commands",
+    "Include testing tasks in all feature templates",
+    "Use pathlib.Path for file operations to ensure cross-platform compatibility"
+  ],
+
+  "python.defaultInterpreter": "python",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "88"],
+
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "build/": true,
+    "dist/": true,
+    "*.egg-info/": true
+  },
+
+  "ai.autocomplete.enabled": true,
+  "ai.chat.enabled": true,
+  "ai.edit.enabled": true,
+
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.osx": "zsh"
+}

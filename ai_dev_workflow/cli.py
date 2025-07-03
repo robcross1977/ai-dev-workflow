@@ -1,0 +1,204 @@
+#!/usr/bin/env python3
+"""
+AI Development Workflow CLI
+
+A unified command-line interface for the AI Development Workflow tools.
+This provides easy access to all workflow scripts and operations.
+"""
+
+import argparse
+import os
+import sys
+import subprocess
+from pathlib import Path
+
+def get_script_dir():
+    """Get the directory containing the workflow scripts."""
+    return Path(__file__).parent
+
+def run_script(script_name, args=None):
+    """Run a workflow script with the given arguments."""
+    script_path = get_script_dir() / f"{script_name}.py"
+    
+    if not script_path.exists():
+        print(f"❌ Script not found: {script_path}")
+        return 1
+    
+    cmd = [sys.executable, str(script_path)]
+    if args:
+        cmd.extend(args)
+    
+    try:
+        result = subprocess.run(cmd, check=False)
+        return result.returncode
+    except Exception as e:
+        print(f"❌ Failed to run script: {e}")
+        return 1
+
+def setup_project(args):
+    """Set up a new project."""
+    print("🚀 Setting up new AI Development Workflow project...")
+    return run_script("setup-project")
+
+def generate_feature(args):
+    """Generate a feature template."""
+    script_args = ["--feature", args.feature]
+    if args.issue:
+        script_args.extend(["--issue", args.issue])
+    if args.output:
+        script_args.extend(["--output", args.output])
+    
+    return run_script("generate_feature_md", script_args)
+
+def validate_features(args):
+    """Validate feature markdown files."""
+    script_args = []
+    if args.all:
+        script_args.append("--all")
+    elif args.file:
+        script_args.append(args.file)
+    else:
+        script_args.append("--all")  # Default to all
+    
+    return run_script("check_task_plan", script_args)
+
+def show_project_info(args):
+    """Show current project information."""
+    try:
+        from .config import load_project_config, get_project_info
+        
+        if not os.path.exists("project-config.json"):
+            print("❌ No project configuration found.")
+            print("Run 'ai-workflow setup' to initialize a project.")
+            return 1
+        
+        info = get_project_info()
+        config = load_project_config()
+        
+        print("📋 Project Information")
+        print("=" * 30)
+        print(f"Name: {info['name']}")
+        print(f"Type: {info['type'].title()}")
+        print(f"Language: {info['language'].title()}")
+        print(f"Framework: {info['framework'].title()}")
+        if info['data_fetching'] != "N/A":
+            print(f"Data Fetching: {info['data_fetching'].upper()}")
+        print(f"Repository: {config.repo_url}")
+        
+        print(f"\n📁 Directory Structure:")
+        for dir_type, path in config.directories.items():
+            exists = "✅" if os.path.exists(path) else "❌"
+            print(f"  {dir_type}: {path} {exists}")
+        
+        return 0
+        
+    except Exception as e:
+        print(f"❌ Failed to load project info: {e}")
+        return 1
+
+def list_features(args):
+    """List all feature files."""
+    try:
+        from .config import load_project_config
+        
+        config = load_project_config()
+        features_dir = Path(config.features_dir)
+        
+        if not features_dir.exists():
+            print(f"❌ Features directory not found: {features_dir}")
+            return 1
+        
+        # Get all .md files
+        feature_files = list(features_dir.glob("*.md"))
+        
+        if not feature_files:
+            print("📋 No feature files found.")
+            print(f"Create your first feature with: ai-workflow feature <name>")
+            return 0
+        
+        print(f"📋 Found {len(feature_files)} feature file(s):")
+        print("=" * 40)
+        
+        for file_path in sorted(feature_files):
+            print(f"  📄 {file_path.name}")
+            
+            # Try to extract the overview/status
+            try:
+                with open(file_path, 'r') as f:
+                    content = f.read()
+                    
+                # Count completed vs total tasks
+                import re
+                total_tasks = len(re.findall(r'- \[[ x]\]', content))
+                completed_tasks = len(re.findall(r'- \[x\]', content))
+                
+                if total_tasks > 0:
+                    progress = (completed_tasks / total_tasks) * 100
+                    print(f"     Progress: {completed_tasks}/{total_tasks} ({progress:.0f}%)")
+                else:
+                    print(f"     Progress: No tasks defined")
+                    
+            except Exception:
+                print(f"     Progress: Unable to read")
+            
+            print()
+        
+        return 0
+        
+    except Exception as e:
+        print(f"❌ Failed to list features: {e}")
+        return 1
+
+def main():
+    """Main CLI function."""
+    parser = argparse.ArgumentParser(
+        description="AI Development Workflow CLI",
+        prog="ai-workflow"
+    )
+    
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+    
+    # Setup command
+    setup_parser = subparsers.add_parser("setup", help="Set up a new project")
+    setup_parser.set_defaults(func=setup_project)
+    
+    # Feature command
+    feature_parser = subparsers.add_parser("feature", help="Generate a feature template")
+    feature_parser.add_argument("feature", help="Feature name (e.g., user-auth, dashboard)")
+    feature_parser.add_argument("--issue", help="GitHub issue ID")
+    feature_parser.add_argument("--output", help="Output file path")
+    feature_parser.set_defaults(func=generate_feature)
+    
+    # Validate command
+    validate_parser = subparsers.add_parser("validate", help="Validate feature files")
+    validate_parser.add_argument("file", nargs="?", help="Specific file to validate")
+    validate_parser.add_argument("--all", action="store_true", help="Validate all files")
+    validate_parser.set_defaults(func=validate_features)
+    
+    # Info command
+    info_parser = subparsers.add_parser("info", help="Show project information")
+    info_parser.set_defaults(func=show_project_info)
+    
+    # List command
+    list_parser = subparsers.add_parser("list", help="List all feature files")
+    list_parser.set_defaults(func=list_features)
+    
+    # Parse arguments
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return 1
+    
+    # Run the selected command
+    try:
+        return args.func(args)
+    except KeyboardInterrupt:
+        print("\n❌ Operation cancelled by user")
+        return 1
+    except Exception as e:
+        print(f"❌ Command failed: {e}")
+        return 1
+
+if __name__ == "__main__":
+    sys.exit(main()) 

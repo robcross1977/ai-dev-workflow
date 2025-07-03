@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Development Workflow Project Configuration",
+  "description": "Configuration schema for AI development workflow projects",
+  "type": "object",
+  "required": ["name", "type", "language", "framework", "repository"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name (used for folders, git repos, etc.)",
+      "pattern": "^[a-z0-9-]+$",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "type": {
+      "type": "string",
+      "enum": ["nextjs", "unity"],
+      "description": "Project type determines folder structure and tooling"
+    },
+    "language": {
+      "type": "string",
+      "enum": ["typescript", "csharp"],
+      "description": "Primary programming language"
+    },
+    "framework": {
+      "type": "string",
+      "enum": ["nextjs", "unity"],
+      "description": "Framework being used"
+    },
+    "dataFetching": {
+      "type": "string",
+      "enum": ["trpc", "swr"],
+      "description": "Data fetching approach (NextJS only)"
+    },
+    "repository": {
+      "type": "object",
+      "required": ["owner", "name"],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "description": "GitHub username or organization"
+        },
+        "name": {
+          "type": "string",
+          "description": "Repository name"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Full repository URL"
+        }
+      }
+    },
+    "directories": {
+      "type": "object",
+      "properties": {
+        "src": { "type": "string" },
+        "tests": { "type": "string" },
+        "docs": { "type": "string" },
+        "scripts": { "type": "string" },
+        "features": { "type": "string" },
+        "planning": { "type": "string" }
+      }
+    },
+    "testing": {
+      "type": "object",
+      "properties": {
+        "unit": { "type": "string" },
+        "e2e": { "type": "string" },
+        "framework": { "type": "string" }
+      }
+    },
+    "linting": {
+      "type": "object",
+      "properties": {
+        "eslint": { "type": "boolean" },
+        "prettier": { "type": "boolean" }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "string",
+      "default": "1.0.0"
+    }
+  },
+  "additionalProperties": false,
+  "if": {
+    "properties": { "type": { "const": "nextjs" } }
+  },
+  "then": {
+    "required": ["dataFetching"],
+    "properties": {
+      "language": { "const": "typescript" },
+      "framework": { "const": "nextjs" }
+    }
+  },
+  "else": {
+    "properties": {
+      "language": { "const": "csharp" },
+      "framework": { "const": "unity" }
+    }
+  }
+}

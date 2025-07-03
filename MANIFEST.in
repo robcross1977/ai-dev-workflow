@@ -1,0 +1,20 @@
+include README.md
+include IMPLEMENTATION_STATUS.md
+include ai-development-workflow.md
+include project-config.schema.json
+include LICENSE
+include requirements.txt
+
+recursive-include ai_dev_workflow *.py
+recursive-include .cursor *.json *.md
+
+# Documentation
+recursive-include docs *.md *.rst
+
+# Exclude development files
+exclude setup.cfg
+exclude tox.ini
+exclude .gitignore
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * .DS_Store 
