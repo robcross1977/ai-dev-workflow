@@ -10,10 +10,10 @@ This repository contains the practical implementation of the AI Development Work
 
 ```bash
 # Unix/Linux/macOS
-curl -sSL https://raw.githubusercontent.com/yourusername/ai-dev-workflow/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.sh | bash
 
 # Windows PowerShell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yourusername/ai-dev-workflow/main/install.ps1" -OutFile "install.ps1"; .\install.ps1
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.ps1" -OutFile "install.ps1"; .\install.ps1
 ```
 
 **Or install via pip:**
@@ -29,7 +29,7 @@ pip install ai-dev-workflow[dev,github]
 **Or install from source:**
 
 ```bash
-git clone https://github.com/yourusername/ai-dev-workflow.git
+git clone https://github.com/robcross1977/ai-dev-workflow.git
 cd ai-dev-workflow
 pip install -e .
 ```

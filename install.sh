@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # AI Development Workflow - Quick Install Script
-# Run with: curl -sSL https://raw.githubusercontent.com/yourusername/ai-dev-workflow/main/install.sh | bash
+# Run with: curl -sSL https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.sh | bash
 
 set -e
 
@@ -51,7 +51,7 @@ if $PYTHON_CMD -m pip install ai-dev-workflow; then
     print_color "✅ Successfully installed from PyPI" "$GREEN"
 else
     print_color "⚠️  PyPI installation failed, trying GitHub..." "$YELLOW"
-    if $PYTHON_CMD -m pip install git+https://github.com/yourusername/ai-dev-workflow.git; then
+    if $PYTHON_CMD -m pip install git+https://github.com/robcross1977/ai-dev-workflow.git; then
         print_color "✅ Successfully installed from GitHub" "$GREEN"
     else
         print_color "❌ Installation failed. Please check your internet connection and try again." "$RED"
@@ -80,8 +80,8 @@ echo "1. Copy .cursor/settings.json to your Cursor settings"
 echo "2. Add .cursor directory to your projects"
 echo "3. Read .cursor/docs.md for detailed instructions"
 echo ""
-print_color "Documentation: https://github.com/yourusername/ai-dev-workflow#readme" "$BLUE"
-print_color "Support: https://github.com/yourusername/ai-dev-workflow/issues" "$BLUE"
+print_color "Documentation: https://github.com/robcross1977/ai-dev-workflow#readme" "$BLUE"
+print_color "Support: https://github.com/robcross1977/ai-dev-workflow/issues" "$BLUE"
 
 # Optional: Install common development tools
 echo ""

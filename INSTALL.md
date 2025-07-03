@@ -18,7 +18,7 @@ pip install ai-dev-workflow[dev,github]
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ai-dev-workflow.git
+git clone https://github.com/robcross1977/ai-dev-workflow.git
 cd ai-dev-workflow
 
 # Install in development mode
@@ -32,7 +32,7 @@ pip install -e .[dev,github]
 
 ```bash
 # Create a new project from this template
-git clone https://github.com/yourusername/ai-dev-workflow.git my-new-project
+git clone https://github.com/robcross1977/ai-dev-workflow.git my-new-project
 cd my-new-project
 
 # Remove the git history and start fresh
@@ -213,7 +213,7 @@ If you want to contribute to the package:
 
 ```bash
 # Clone and setup development environment
-git clone https://github.com/yourusername/ai-dev-workflow.git
+git clone https://github.com/robcross1977/ai-dev-workflow.git
 cd ai-dev-workflow
 
 # Create virtual environment

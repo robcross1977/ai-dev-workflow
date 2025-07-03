@@ -1,5 +1,5 @@
 # AI Development Workflow - Windows PowerShell Install Script
-# Run with: Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yourusername/ai-dev-workflow/main/install.ps1" -OutFile "install.ps1"; .\install.ps1
+# Run with: Invoke-WebRequest -Uri "https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.ps1" -OutFile "install.ps1"; .\install.ps1
 
 param(
     [switch]$SkipOptionalTools
@@ -57,7 +57,7 @@ try {
 } catch {
     Write-ColorOutput "⚠️ PyPI installation failed, trying GitHub..." "Yellow"
     try {
-        & $pythonCmd -m pip install git+https://github.com/yourusername/ai-dev-workflow.git
+        & $pythonCmd -m pip install git+https://github.com/robcross1977/ai-dev-workflow.git
         Write-ColorOutput "✅ Successfully installed from GitHub" "Green"
     } catch {
         Write-ColorOutput "❌ Installation failed. Please check your internet connection and try again." "Red"
@@ -90,8 +90,8 @@ Write-Host "2. Add .cursor directory to your projects"
 Write-Host "3. Read .cursor/docs.md for detailed instructions"
 
 Write-Host ""
-Write-ColorOutput "Documentation: https://github.com/yourusername/ai-dev-workflow#readme" "Blue"
-Write-ColorOutput "Support: https://github.com/yourusername/ai-dev-workflow/issues" "Blue"
+Write-ColorOutput "Documentation: https://github.com/robcross1977/ai-dev-workflow#readme" "Blue"
+Write-ColorOutput "Support: https://github.com/robcross1977/ai-dev-workflow/issues" "Blue"
 
 # Optional tools installation
 if (-not $SkipOptionalTools) {

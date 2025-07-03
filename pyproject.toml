@@ -55,10 +55,10 @@ ai-workflow = "ai_dev_workflow.cli:main"
 ai-setup = "ai_dev_workflow.setup:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/ai-dev-workflow"
-Repository = "https://github.com/yourusername/ai-dev-workflow"
-Documentation = "https://github.com/yourusername/ai-dev-workflow#readme"
-"Bug Reports" = "https://github.com/yourusername/ai-dev-workflow/issues"
+Homepage = "https://github.com/robcross1977/ai-dev-workflow"
+Repository = "https://github.com/robcross1977/ai-dev-workflow"
+Documentation = "https://github.com/robcross1977/ai-dev-workflow#readme"
+"Bug Reports" = "https://github.com/robcross1977/ai-dev-workflow/issues"
 
 [tool.setuptools]
 packages = ["ai_dev_workflow"]

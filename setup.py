@@ -18,9 +18,9 @@ setup(
     description="AI Development Workflow for NextJS and Unity projects",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    author="AI Development Team",
-    author_email="dev@example.com",
-    url="https://github.com/yourusername/ai-dev-workflow",
+    author="Robert Crossland",
+    author_email="robertcrossland@proton.me",
+    url="https://github.com/robcross1977/ai-dev-workflow",
     
     # Package configuration
     packages=find_packages(),
