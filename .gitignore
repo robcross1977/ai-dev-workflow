@@ -57,7 +57,7 @@ Thumbs.db
 .ipynb_checkpoints 
 
 # Other
-./ai-development-workflow.md
-./DISTRIBUTION.md
-./DISTRIBUTION_SIMPLE.md
-./GITHUB_RELEASE.md
+ai-development-workflow.md
+DISTRIBUTION.md
+DISTRIBUTION_SIMPLE.md
+GITHUB_RELEASE.md
