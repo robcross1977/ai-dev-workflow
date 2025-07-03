@@ -1,3 +1,0 @@
-[console_scripts]
-ai-setup = ai_dev_workflow.setup:main
-ai-workflow = ai_dev_workflow.cli:main
