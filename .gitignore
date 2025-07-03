@@ -55,3 +55,9 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints 
+
+# Other
+./ai-development-workflow.md
+./DISTRIBUTION.md
+./DISTRIBUTION_SIMPLE.md
+./GITHUB_RELEASE.md
