@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # AI Development Workflow - Quick Install Script
-# Run with: curl -sSL https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.sh | bash
+# Run with: curl -sSL https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/trunk/install.sh | bash
 
 set -e
 

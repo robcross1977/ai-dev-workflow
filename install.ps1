@@ -1,5 +1,5 @@
 # AI Development Workflow - Windows PowerShell Install Script
-# Run with: Invoke-WebRequest -Uri "https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.ps1" -OutFile "install.ps1"; .\install.ps1
+# Run with: Invoke-WebRequest -Uri "https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/trunk/install.ps1" -OutFile "install.ps1"; .\install.ps1
 
 param(
     [switch]$SkipOptionalTools

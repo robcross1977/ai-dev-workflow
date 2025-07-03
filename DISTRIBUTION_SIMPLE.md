@@ -19,8 +19,7 @@ Here are the simplest ways to share your AI Development Workflow package:
 # 1. Create repo on GitHub.com named "ai-dev-workflow"
 # 2. Push your code:
 git remote add origin https://github.com/robcross1977/ai-dev-workflow.git
-git branch -M main
-git push -u origin main
+git push -u origin trunk
 
 # Users install with:
 pip install git+https://github.com/robcross1977/ai-dev-workflow.git
@@ -69,13 +68,13 @@ pip install .
 **Unix/Linux/macOS:**
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/trunk/install.sh | bash
 ```
 
 **Windows PowerShell:**
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.ps1" -OutFile "install.ps1"; .\install.ps1
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/trunk/install.ps1" -OutFile "install.ps1"; .\install.ps1
 ```
 
 ---
@@ -122,8 +121,8 @@ ai-workflow --help
 
    ```bash
    git remote add origin https://github.com/robcross1977/ai-dev-workflow.git
-   git branch -M main
-   git push -u origin main
+   git branch -M trunk
+   git push -u origin trunk
    ```
 
 4. **Create First Release:**
@@ -158,10 +157,10 @@ pip install git+https://github.com/robcross1977/ai-dev-workflow.git
 
 ```bash
 # Unix/Linux/macOS
-curl -sSL https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/trunk/install.sh | bash
 
 # Windows
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/main/install.ps1" -OutFile "install.ps1"; .\install.ps1
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/robcross1977/ai-dev-workflow/trunk/install.ps1" -OutFile "install.ps1"; .\install.ps1
 ```
 
 ### **Verify Installation:**
